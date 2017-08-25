@@ -6,12 +6,6 @@ var bcrypt = require('bcrypt-nodejs');
 var User = require('../models/user');
 var jwt = require('../services/jwt');
 
-function test(req, res){
-	res.status(200).send({
-		message: 'Testing action of controller for the API REST with NODE.js and MongoDB'
-	});
-}
-
 function saveUser(req,res){
 	var user = new User;
 
@@ -107,7 +101,7 @@ function updateUser(req, res){
 	})
 }
 
-function uploadImage(req,res){
+function uploadImage(req, res){
 	var userId = req.params.id;
 	var file_name = 'not uploaded..';
 
@@ -119,7 +113,7 @@ function uploadImage(req,res){
 		var ext_split = file_name.split('\.');
 		var file_ext = ext_split[1];
 
-		if(file_ext == 'png' || file_ext == 'jpg' || file_ext == 'gif'){
+		if(file_ext == 'png' || file_ext == 'jpg' || file_ext == 'gif'|| file_ext == 'jpeg'){
 			User.findByIdAndUpdate(userId,{image: file_name}, function(err, userUpdated){
 				if(err){
 					res.status(500).send({message: 'Error updating image'});
@@ -153,7 +147,6 @@ function getImageFile(req, res){
 }
 
 module.exports = {
-	test,
 	saveUser,
 	loginUser,
 	updateUser,

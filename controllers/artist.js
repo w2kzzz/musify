@@ -136,7 +136,7 @@ function uploadImage(req, res){
 		var ext_split = file_name.split('\.');
 		var file_ext = ext_split[1];
 
-		if(file_ext == 'png' || file_ext == 'jpg' || file_ext == 'gif'){
+		if(file_ext == 'png' || file_ext == 'jpg' || file_ext == 'gif' || file_ext == 'jpeg'){
 			User.findByIdAndUpdate(artistId,{image: file_name}, function(err, artistUpdated){
 				if(err){
 					res.status(500).send({message: 'Error updating image'});
@@ -150,7 +150,6 @@ function uploadImage(req, res){
 			})
 		}
 
-		console.log(file_path);
 	}else{
 		res.status(200).send({message: 'Image not uploaded'});
 	}
