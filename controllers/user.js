@@ -20,7 +20,7 @@ function saveUser(req,res){
 	user.name = params.name;
 	user.surname = params.surname;
 	user.email = params.email;
-	user.role = 'ROLE_USER';
+	user.role = 'ROLE_ADMIN';
 	user.image = 'null';
 
 	if(params.password){
@@ -28,7 +28,7 @@ function saveUser(req,res){
 			user.password = hash;
 
 			if(user.name != null && user.surname != null && user.email != null){
-				user.save((err, userStored) => {
+				user.save(function (err, userStored) {
 					if(err){
 						res.status(500).send({
 							message: 'There was an ERROR saving the user'});
@@ -127,7 +127,7 @@ function uploadImage(req,res){
 					if(!userUpdated){
 						res.status(404).send({message: 'Image wasnt updated'});
 					}else{
-						res.status(200).send({user: updateUser});
+						res.status(200).send({user: userUpdated});
 					}
 				}
 			})
