@@ -3,10 +3,138 @@
 	{
 		"selected_items":
 		[
+			[
+				"file",
+				"file_name"
+			],
+			[
+				"Acc",
+				"Access-Control-Allow-Origin"
+			],
+			[
+				"Ac",
+				"Access-Control-Allow-Origin"
+			],
+			[
+				"song",
+				"songUpdated"
+			],
+			[
+				"save",
+				"saveSong"
+			],
+			[
+				"son",
+				"songStored"
+			],
+			[
+				"st",
+				"songStored"
+			],
+			[
+				"upload",
+				"uploadImage"
+			],
+			[
+				"delete",
+				"deleteAlbum"
+			],
+			[
+				"album",
+				"albumId"
+			],
+			[
+				"upd",
+				"updateAlbum"
+			],
+			[
+				"find",
+				"findById"
+			],
+			[
+				"get",
+				"getAlbums"
+			],
+			[
+				"ar",
+				"artistId"
+			],
+			[
+				"arti",
+				"artistID"
+			],
+			[
+				"albu",
+				"albumStored"
+			],
+			[
+				"artis",
+				"artistUpdated"
+			],
+			[
+				"artist",
+				"artistUpdated"
+			],
+			[
+				"dele",
+				"deleteArtist"
+			],
+			[
+				"getArti",
+				"getArtists"
+			],
+			[
+				"path",
+				"pathFile"
+			],
+			[
+				"user",
+				"userUpdated"
+			],
+			[
+				"fin",
+				"findByIdAndUpdate"
+			],
+			[
+				"fil",
+				"file_ext"
+			],
+			[
+				"md",
+				"md_upload"
+			],
+			[
+				"update",
+				"updateUser"
+			],
+			[
+				"upda",
+				"updateUser"
+			],
+			[
+				"se",
+				"secret"
+			],
+			[
+				"Art",
+				"ArtistSchema"
+			],
+			[
+				"body",
+				"bodyParser"
+			]
 		]
 	},
 	"buffers":
 	[
+		{
+			"file": "api/controllers/album.js",
+			"settings":
+			{
+				"buffer_size": 4039,
+				"line_ending": "Windows"
+			}
+		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -24,9 +152,10 @@
 	},
 	"console":
 	{
-		"height": 0.0,
+		"height": 126.0,
 		"history":
 		[
+			"import urllib.request,os,hashlib; h = 'df21e130d211cfc94d9b0905775a7c0f' + '1e3d39e33b79698005270310898eea76'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
 		]
 	},
 	"distraction_free":
@@ -40,10 +169,39 @@
 	},
 	"expanded_folders":
 	[
-		"/C/wamp64/www/musify"
+		"/C/wamp64/www/musify",
+		"/C/wamp64/www/musify/api",
+		"/C/wamp64/www/musify/client"
 	],
 	"file_history":
 	[
+		"/C/wamp64/www/musify/client/src/index.html",
+		"/C/wamp64/www/musify/client/karma.conf.js",
+		"/C/wamp64/www/musify/client/src/app/app.component.ts",
+		"/C/wamp64/www/musify/client/src/app/app.module.ts",
+		"/C/wamp64/www/musify/api/routes/song.js",
+		"/C/wamp64/www/musify/api/app.js",
+		"/C/wamp64/www/musify/app.js",
+		"/C/wamp64/www/musify/routes/song.js",
+		"/C/wamp64/www/musify/api/controllers/user.js",
+		"/C/wamp64/www/musify/api/controllers/song.js",
+		"/C/wamp64/www/musify/controllers/user.js",
+		"/C/wamp64/www/musify/controllers/artist.js",
+		"/C/wamp64/www/musify/routes/artist.js",
+		"/C/wamp64/www/musify/controllers/album.js",
+		"/C/wamp64/www/musify/controllers/song.js",
+		"/C/wamp64/www/musify/routes/album.js",
+		"/C/wamp64/www/musify/models/user.js",
+		"/C/wamp64/www/musify/middlewares/authenticated.js",
+		"/C/wamp64/www/musify/services/jwt.js",
+		"/C/wamp64/www/musify/models/song.js",
+		"/C/wamp64/www/musify/routes/user.js",
+		"/C/wamp64/www/musify/index.js",
+		"/C/wamp64/www/musify/models/artist.js",
+		"/C/wamp64/www/musify/models/album.js",
+		"/C/wamp64/www/musify/user.js",
+		"/C/wamp64/www/musify/package.json",
+		"/C/cygwin64/home/LuisHaroldoCastroCab/.bash_profile"
 	],
 	"find":
 	{
@@ -78,8 +236,38 @@
 	"groups":
 	[
 		{
+			"selected": 0,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "api/controllers/album.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4039,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
 			]
 		}
 	],
@@ -89,7 +277,7 @@
 	},
 	"input":
 	{
-		"height": 0.0
+		"height": 31.0
 	},
 	"layout":
 	{
@@ -156,11 +344,11 @@
 	"settings":
 	{
 	},
-	"show_minimap": true,
+	"show_minimap": false,
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 150.0,
+	"side_bar_width": 208.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

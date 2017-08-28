@@ -92,9 +92,83 @@ function updateAlbum(req, res){
 	})
 }
 
+function deleteAlbum(req, res){
+	var albumId = req.params.id;
+
+	Album.findByIdAndRemove({albumId}).remove(function(err, albumRemoved){
+		if(err){
+			res.status(500).send({message: 'Error deleting album'});
+		}else{
+			if(!albumRemoved){
+				res.status(404).send({message: 'Album wasnt deleted'});
+			}else{
+				Song.find({album: albumRemoved._id}).remove(function(err, songRemoved){
+					if(err){
+						res.status(500).send({message: 'Error deleting song'});
+					}else{
+						if(!songRemoved){
+							res.status(404).send({message: 'Song wasnt deleted'});
+						}else{
+							res.status(200).send({artist: artistRemoved});
+						}
+					}
+				})
+			}
+		}
+	});
+}
+
+function uploadImage(req, res){
+	var albumId = req.params.id;
+	var file_name = 'not uploaded..';
+
+	if(req.files){
+		var file_path = req.files.image.path;
+		var file_split = file_path.split('\\');
+		var file_name = file_split[2];
+
+		var ext_split = file_name.split('\.');
+		var file_ext = ext_split[1];
+
+		if(file_ext == 'png' || file_ext == 'jpg' || file_ext == 'gif' || file_ext == 'jpeg'){
+			Album.findByIdAndUpdate(albumId,{image: file_name}, function(err, albumUpdated){
+				if(err){
+					res.status(500).send({message: 'Error updating image'});
+				}else{
+					if(!albumUpdated){
+						res.status(404).send({message: 'Image wasnt updated'});
+					}else{
+						res.status(200).send({album: albumUpdated});
+					}
+				}
+			})
+		}
+
+	}else{
+		res.status(200).send({message: 'Image not uploaded'});
+	}
+}
+
+function getImageFile(req, res){
+	var imageFile = req.params.imageFile;
+	var pathFile = './uploads/albums/'+imageFile;
+
+	fs.exists(pathFile, function(exists){
+		if(exists){
+			res.sendFile(path.resolve(pathFile));
+		}else{
+			res.status(200).send({message: 'Image doesnt exists'});
+		}
+	})
+}
+
+
 module.exports =  {
 	getAlbum,
 	getAlbums,
 	saveAlbum,
-	updateAlbum
+	updateAlbum,
+	deleteAlbum,
+	uploadImage,
+	getImageFile
 };

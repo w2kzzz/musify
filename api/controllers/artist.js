@@ -137,7 +137,7 @@ function uploadImage(req, res){
 		var file_ext = ext_split[1];
 
 		if(file_ext == 'png' || file_ext == 'jpg' || file_ext == 'gif' || file_ext == 'jpeg'){
-			User.findByIdAndUpdate(artistId,{image: file_name}, function(err, artistUpdated){
+			Artist.findByIdAndUpdate(artistId,{image: file_name}, function(err, artistUpdated){
 				if(err){
 					res.status(500).send({message: 'Error updating image'});
 				}else{
