@@ -136,7 +136,7 @@ function uploadSong(req, res){
 		}
 
 	}else{
-		res.status(200).send({message: 'Image not uploaded'});
+		res.status(200).send({message: 'Song not uploaded'});
 	}
 }
 
