@@ -23,7 +23,7 @@ app.use(function(req, res, next){
 	res.header('Allow', 'GET, POST, OPTIONS, PUT, DELETE');
 
 	next();
-})
+});
 // routes base
 
 app.use('/api', user_routes);

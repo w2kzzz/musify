@@ -14,8 +14,8 @@ function saveUser(req,res){
 	user.name = params.name;
 	user.surname = params.surname;
 	user.email = params.email;
-	user.role = 'ROLE_ADMIN';
-	user.image = 'null';
+	user.role = params.role;
+	user.image = params.image;
 
 	if(params.password){
 		bcrypt.hash(params.password, null, null, function(err, hash) {
@@ -32,7 +32,7 @@ function saveUser(req,res){
 								message: 'User not saved correctly'});
 						}else{
 							res.status(200).send({
-								message: userStored});
+								user: userStored});
 						}
 					}
 				})
