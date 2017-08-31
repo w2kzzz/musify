@@ -12,61 +12,78 @@
 
 <div class="clearfix"></div>
 
-<div class="container">
-  <div class="row col-lg-12" *ngIf="!identity">
-
-    <div class="col-lg-6">
-      <h1>Sing-In</h1>
-      <form #loginForm = "ngForm" (ngSubmit) = "onSubmit()" class="col-md-10">
-        <p>
-          <label>Email:</label>
-          <input type="text" #email="ngModel" name="email" [(ngModel)]="user.email" class="form-control" required />
-          <span *ngIf="!email.valid && email.touched">Email is required</span>
-        </p>
-        <p>
-          <label>Password:</label>
-          <input type="password" #password="ngModel" name="password" [(ngModel)]="user.password" class="form-control" required />
-        </p>
-          <input type="submit" value="Sign-In" class="btn btn-primary" />
-          <div *ngIf="errorMessage">
-              <div class="alert alert-warning" role="alert">
-                  <strong>Error!</strong> {{errorMessage}}
-              </div>
+<div class="container box" *ngIf="!identity && !register">
+  <div class="row col-lg-12 justify-content-md-center" >
+    <div class="col-lg-5">
+      <div class="card">
+        <div class="card-header">
+          <h3>Sing-In</h3>
         </div>
-      </form>
-    </div>
-
-    <div class="col-lg-6">
-        <h1>Register</h1>
-        <form #registerForm = "ngForm" (ngSubmit) = "onSubmitRegister(); this.registerForm.reset();" class="col-md-10">
-            <p>
-              <label>First Name:</label>
-              <input type="text" #name="ngModel" name="name" [(ngModel)]="user_register.name" class="form-control" required />
-              <span *ngIf="!name.valid && name.touched">First Name is required</span>
-            </p>
-            <p>
-              <label>Last Name:</label>
-              <input type="text" #surname="ngModel" name="surname" [(ngModel)]="user_register.surname" class="form-control" required />
-              <span *ngIf="!surname.valid && surname.touched">Last Name is required</span>
-            </p>
-            <p>
+        <form #loginForm = "ngForm" (ngSubmit) = "onSubmit()" class="col-md-12">
+          <div class="card-block">
+            <div class="form-group">
               <label>Email:</label>
-              <input type="text" #emailreg="ngModel" name="email_reg" [(ngModel)]="user_register.email" class="form-control" required />
-              <span *ngIf="!emailreg.valid && emailreg.touched">Email is required</span>
-            </p>
-            <p>
+              <input type="text" #email="ngModel" name="email" [(ngModel)]="user.email" class="form-control" required />
+              <span *ngIf="!email.valid && email.touched">Email is required</span>
+            </div>
+            <div class="form-group">
               <label>Password:</label>
-              <input type="password" #password="ngModel" name="password" [(ngModel)]="user_register.password" class="form-control" required />
-              <span *ngIf="!password.valid && password.touched">Password is required</span>
-            </p>
-              <input type="submit" value="Register" class="btn btn-primary" />
-            <div *ngIf="alertMessage">
-              <div class="alert alert-info" role="alert">
-                  <strong>Alert!</strong> {{alertMessage}}
+              <input type="password" #password="ngModel" name="password" [(ngModel)]="user.password" class="form-control" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <input type="submit" value="Sign-In" class="btn btn-primary" />
+            <input class="btn btn-primary" type="button" value="Register" (click) = "toggleRegister();">
+            <div *ngIf="errorMessage">
+              <div class="alert alert-warning" role="alert">
+                <strong>Error!</strong> {{errorMessage}}
               </div>
             </div>
-          </form>
+          </div>
+        </form>
+      </div>
     </div>
-
+  </div>
+</div>
+<div class="container box" *ngIf="!identity && register">
+  <div class="row col-lg-12 justify-content-md-center">
+      <div class="col-lg-5">
+          <div class="card">
+            <div class="card-header">
+                <h3>Register</h3>
+            </div>
+            <form #registerForm = "ngForm" (ngSubmit) = "onSubmitRegister(); this.registerForm.reset();" class="col-md-12" >
+                <div class="form-group">
+                  <label>First Name:</label>
+                  <input type="text" #name="ngModel" name="name" [(ngModel)]="user_register.name" class="form-control" required />
+                  <span *ngIf="!name.valid && name.touched">First Name is required</span>
+                </div>
+                <div class="form-group">
+                  <label>Last Name:</label>
+                  <input type="text" #surname="ngModel" name="surname" [(ngModel)]="user_register.surname" class="form-control" required />
+                  <span *ngIf="!surname.valid && surname.touched">Last Name is required</span>
+                </div>
+                <div class="form-group">
+                  <label>Email:</label>
+                  <input type="text" #emailreg="ngModel" name="email_reg" [(ngModel)]="user_register.email" class="form-control" required />
+                  <span *ngIf="!emailreg.valid && emailreg.touched">Email is required</span>
+                </div>
+                <div class="form-group">
+                  <label>Password:</label>
+                  <input type="password" #password="ngModel" name="password" [(ngModel)]="user_register.password" class="form-control" required />
+                  <span *ngIf="!password.valid && password.touched">Password is required</span>
+                </div>
+                <div class="form-group">
+                  <input type="submit" value="Submit" class="btn btn-primary" />
+                  <input class="btn btn-primary" type="button" value="Sign-In" (click) = "toggleRegister();"/>
+                </div>
+                  <div *ngIf="alertMessage">
+                    <div class="alert alert-info" role="alert">
+                      <strong>Alert!</strong> {{alertMessage}}
+                    </div>
+                  </div>
+              </form>
+          </div>
+        </div>
   </div>
 </div>

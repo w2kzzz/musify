@@ -1,3 +1,9 @@
-body{
-  background: #eee;
+.box{
+  padding-top: 50px;
 }
+html, body{height:100%;}
+
+body {
+  background:url('../images/headphones.jpg') no-repeat center center fixed;
+  background-size: cover;
+  }

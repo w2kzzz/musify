@@ -14,6 +14,7 @@ export class AppComponent implements OnInit {
   public user_register: User;
   public identity;
   public token;
+  public register;
   public errorMessage;
   public alertMessage;
 
@@ -25,6 +26,7 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(){
+    this.register = false;
     this.identity = this._userService.getIdentity();
     this.token = this._userService.getToken();
 
@@ -108,10 +110,22 @@ export class AppComponent implements OnInit {
     );
   }
 
-  logOut(){
+  public logOut(){
     localStorage.removeItem('identity');
     localStorage.removeItem('token');
     this.identity = null;
     this.token = null;
+  }
+
+  public toggleRegister(){
+    //console.log(this.register);
+    if(this.register){
+      if(this.alertMessage){
+        this.alertMessage = null;
+      }
+      this.register = null;
+    }else{
+      this.register = true;
+    }
   }
 }
