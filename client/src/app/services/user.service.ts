@@ -13,7 +13,7 @@ export class UserService {
   constructor(private _http: Http){
     this.url = GLOBAL.url;
   }
-
+  //service to sign up
   signup(user_to_login, gethash = null){
     if(gethash != null){
       user_to_login.gethash = gethash;
