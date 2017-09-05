@@ -27,9 +27,9 @@ export class MainMenuComponent implements OnInit {
   public logOut(){
     localStorage.removeItem('identity');
     localStorage.removeItem('token');
-    this.router.navigate(['/login']);
     this.identity = null;
     this.token = null;
+    this.router.navigate(['login']);
   }
 
 }

@@ -126,6 +126,7 @@ function uploadImage(req, res){
 						res.status(404).send({message: 'Image wasnt updated'});
 					}else{
 						res.status(200).send({image: file_name, user: userUpdated});
+						//console.log('im here');
 					}
 				}
 			})

@@ -8,15 +8,15 @@ import { RegisterUserComponent } from "./components/register-user/register-user.
 import { MainMenuComponent } from "./components/main-menu/main-menu.component";
 
 const appRoutes: Routes = [
-  { path: '', component: LoginUserComponent },
+  { path: '', component: MainMenuComponent },
+  { path: 'login', component: LoginUserComponent },
+  { path: 'register', component: RegisterUserComponent },
   {
     path: 'main', component: MainMenuComponent,
     children: [
       { path: 'user-info', component: UserEditComponent }
     ]
   },
-  { path: 'login', component: LoginUserComponent },
-  { path: 'register', component: RegisterUserComponent },
   { path: '**', component: UserEditComponent }
 ];
 
