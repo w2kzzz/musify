@@ -88,6 +88,10 @@ function updateUser(req, res){
 	var userId = req.params.id;
 	var update = req.body;
 
+	if(userId != req.user.sub){
+		return res.status(500).send({message: 'Error: you have no privilege to update this user'});
+	}
+
 	User.findByIdAndUpdate(userId, update, function(err, userUpdated){
 		if(err){
 			res.status(500).send({message: 'Error updating user'});
@@ -95,7 +99,7 @@ function updateUser(req, res){
 			if(!userUpdated){
 				res.status(404).send({message: 'User wasnt updated'});
 			}else{
-				res.status(200).send({user: updateUser});
+				res.status(200).send({user: userUpdated});
 			}
 		}
 	})

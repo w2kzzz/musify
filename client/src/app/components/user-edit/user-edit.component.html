@@ -1,0 +1,33 @@
+<div class="container box">
+    <div class="row col-lg-12 justify-content-md-center">
+      <div class="col-lg-5">
+        <div class="card">
+          <div class="card-header">
+            <h3>Update User Profile</h3>
+          </div>
+          <form #registerForm="ngForm" (ngSubmit)="onSubmitUpdate();" class="col-md-12">
+            <div class="form-group">
+              <label>First Name:</label>
+              <input type="text" #name="ngModel" name="name" [(ngModel)]="user.name" class="form-control" />
+            </div>
+            <div class="form-group">
+              <label>Last Name:</label>
+              <input type="text" #surname="ngModel" name="surname" [(ngModel)]="user.surname" class="form-control" />
+            </div>
+            <div class="form-group">
+              <label>Email:</label>
+              <input type="text" #emailreg="ngModel" name="email" [(ngModel)]="user.email" class="form-control" />
+            </div>
+            <div class="form-group">
+              <input type="submit" value="Submit" class="btn btn-primary" />
+            </div>
+            <div *ngIf="alertMessage">
+              <div class="alert alert-info" role="alert">
+                <strong>Alert!</strong> {{alertMessage}}
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>

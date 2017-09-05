@@ -1,0 +1,43 @@
+<div class="container box" *ngIf="!identity">
+  <div class="row col-lg-12 justify-content-md-center">
+    <div class="col-lg-5">
+      <div class="card">
+        <div class="card-header">
+          <h3>Register</h3>
+        </div>
+        <form #registerForm="ngForm" (ngSubmit)="onSubmitRegister(); this.registerForm.reset();" class="col-md-12">
+          <div class="form-group">
+            <label>First Name:</label>
+            <input type="text" #name="ngModel" name="name" [(ngModel)]="user_register.name" class="form-control" required />
+            <span *ngIf="!name.valid && name.touched">First Name is required</span>
+          </div>
+          <div class="form-group">
+            <label>Last Name:</label>
+            <input type="text" #surname="ngModel" name="surname" [(ngModel)]="user_register.surname" class="form-control" required />
+            <span *ngIf="!surname.valid && surname.touched">Last Name is required</span>
+          </div>
+          <div class="form-group">
+            <label>Email:</label>
+            <input type="text" #emailreg="ngModel" name="email_reg" [(ngModel)]="user_register.email" class="form-control" required />
+            <span *ngIf="!emailreg.valid && emailreg.touched">Email is required</span>
+          </div>
+          <div class="form-group">
+            <label>Password:</label>
+            <input type="password" #password="ngModel" name="password" [(ngModel)]="user_register.password" class="form-control" required
+            />
+            <span *ngIf="!password.valid && password.touched">Password is required</span>
+          </div>
+          <div class="form-group">
+            <input type="submit" value="Submit" class="btn btn-primary" />
+            <input class="btn btn-primary" type="button" value="Sign-In" (click)="goLogin();" />
+          </div>
+          <div *ngIf="alertMessage">
+            <div class="alert alert-info" role="alert">
+              <strong>Alert!</strong> {{alertMessage}}
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
