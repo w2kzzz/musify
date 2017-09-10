@@ -49,13 +49,15 @@ export class UserEditComponent implements OnInit {
           }else{
             this.makeFileRequest(this.url+'upload-image-user/'+this.user._id,[],this.filesToUpload).then(
               function(result: any){
-                this.user.image = result.image;
-                localStorage.setItem('identity',JSON.stringify(this.user));
-
-                //console.log(this.user);
+                var image = result.image;
+                var identity = JSON.parse(localStorage.getItem('identity'));
+                identity.image = image;
+                localStorage.setItem('identity',JSON.stringify(identity));
               }
             );
           }
+          this.user = this._userService.getIdentity();
+          //console.log(this.user);
           this.alertMessage = 'User updated correctly';
         }
       },

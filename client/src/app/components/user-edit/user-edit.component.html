@@ -1,10 +1,11 @@
 <div class="container box">
-    <div class="row col-lg-12 justify-content-md-center">
-      <div class="col-lg-5">
-        <div class="card">
-          <div class="card-header">
-            <h3>Update User Profile</h3>
-          </div>
+  <div class="row col-lg-12 justify-content-md-center">
+    <div class="col-lg-5">
+      <div class="card">
+        <div class="card-header">
+          <h3>Update User Profile</h3>
+        </div>
+        <div class="card-block">
           <form #registerForm="ngForm" (ngSubmit)="onSubmitUpdate();" class="col-md-12">
             <div class="form-group" *ngIf="user.image && user.image != 'null'">
               <img class="rounded mx-auto d-block" src="{{url+'get-image-user/'+user.image}}" alt="User profile image" style="width: 200px">
@@ -22,12 +23,12 @@
               <input type="text" #emailreg="ngModel" name="email" [(ngModel)]="user.email" class="form-control" />
             </div>
             <div class="form-group">
-                <label>Upload Image:</label>
-                <input type="file" placeholder="Select an Image file" (change)="fileChangeEvent($event);" class="form-control" />
+              <label>Upload Image:</label>
+              <input type="file" placeholder="Select an Image file" (change)="fileChangeEvent($event);" class="form-control" />
             </div>
             <div class="form-group">
-                <input type="submit" value="Submit" class="btn btn-primary" />
-              </div>
+              <input type="submit" value="Submit" class="btn btn-primary" />
+            </div>
             <div *ngIf="alertMessage">
               <div class="alert alert-info" role="alert">
                 <strong>Alert!</strong> {{alertMessage}}
@@ -38,3 +39,4 @@
       </div>
     </div>
   </div>
+</div>

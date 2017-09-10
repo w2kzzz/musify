@@ -5,6 +5,7 @@ var path = require('path');
 var bcrypt = require('bcrypt-nodejs');
 var User = require('../models/user');
 var jwt = require('../services/jwt');
+var upath = require('upath');
 
 function saveUser(req,res){
 	var user = new User;
@@ -110,14 +111,12 @@ function uploadImage(req, res){
 	var file_name = 'not uploaded..';
 
 	if(req.files){
-		var file_path = req.files.image.path;
-		var file_split = file_path.split('\\');
-		var file_name = file_split[2];
+		var file_path = upath.normalize(req.files.image.path);
+		var file_split = upath.parse(file_path);
+		var file_name = file_split.base;
+		var file_ext = file_split.ext;		
 
-		var ext_split = file_name.split('\.');
-		var file_ext = ext_split[1];
-
-		if(file_ext == 'png' || file_ext == 'jpg' || file_ext == 'gif'|| file_ext == 'jpeg'){
+		if(file_ext == '.png' || file_ext == '.jpg' || file_ext == '.gif'|| file_ext == '.jpeg'){
 			User.findByIdAndUpdate(userId,{image: file_name}, function(err, userUpdated){
 				if(err){
 					res.status(500).send({message: 'Error updating image'});
@@ -126,10 +125,10 @@ function uploadImage(req, res){
 						res.status(404).send({message: 'Image wasnt updated'});
 					}else{
 						res.status(200).send({image: file_name, user: userUpdated});
-						//console.log('im here');
+						console.log('im here');
 					}
 				}
-			})
+			});
 		}
 
 		console.log(file_path);
