@@ -36,6 +36,7 @@ export class UserEditComponent implements OnInit {
 
   public onSubmitUpdate() {
     let fileInput = <HTMLInputElement>document.getElementById('inputFile');
+    let profileImage = <HTMLImageElement>document.getElementById('profileImage');
     //  console.log(this.user);
     this._userService.updateUser(this.user).subscribe(
       response => {
@@ -49,21 +50,16 @@ export class UserEditComponent implements OnInit {
             // redirect
           }else {
             this.makeFileRequest(this.url + 'upload-image-user/' + this.user._id, [], this.filesToUpload).then(
-              function(result: any){
-                var identity = JSON.parse(localStorage.getItem('identity'));
-                // console.log('identity current image: '+identity.image);
-                identity.image = result.image;
-                // console.log('identity new image: '+identity.image);
-                localStorage.setItem('identity', JSON.stringify(identity));
+              (result: any) => {
+                this.user.image = result.image;
+                localStorage.setItem('identity', JSON.stringify(this.user));
               }
             );
           }
-          // console.log('previous image: '+this.user.image);
-          // console.log(this._userService.getIdentity());
-          this.user = this._userService.getIdentity();
-          // console.log(this.user.image);
-          // console.log(this.user);
+
+          profileImage.src = this.url + 'get-image-user/' + this.user.image;
           fileInput.value = '';
+
 
           this.alertMessage = 'User updated correctly';
         }
