@@ -19,9 +19,9 @@ export class UserEditComponent implements OnInit {
   public filesToUpload: Array<File>;
   public url;
 
-  constructor(private _userService:UserService
-  ){
-    this.title = "Update User";
+  constructor(private _userService: UserService
+  ) {
+    this.title = 'Update User';
    }
 
   ngOnInit() {
@@ -31,40 +31,47 @@ export class UserEditComponent implements OnInit {
     this.user = this.identity;
     this.url = GLOBAL.url;
 
-    //console.log('Component User-edit working');
+    // console.log('Component User-edit working');
   }
 
-  public onSubmitUpdate(){
-    //console.log(this.user);
+  public onSubmitUpdate() {
+    let fileInput = <HTMLInputElement>document.getElementById('inputFile');
+    //  console.log(this.user);
     this._userService.updateUser(this.user).subscribe(
-      response =>{
+      response => {
        // console.log(this.user);
-        if(!response.user){
+        if (!response.user) {
           this.alertMessage = 'Error updating user';
-        }else{
-          localStorage.setItem('identity',JSON.stringify(this.user));
+        }else {
+          localStorage.setItem('identity', JSON.stringify(this.user));
 
-          if(!this.filesToUpload){
-            //redirect
-          }else{
-            this.makeFileRequest(this.url+'upload-image-user/'+this.user._id,[],this.filesToUpload).then(
+          if (!this.filesToUpload) {
+            // redirect
+          }else {
+            this.makeFileRequest(this.url + 'upload-image-user/' + this.user._id, [], this.filesToUpload).then(
               function(result: any){
-                var image = result.image;
                 var identity = JSON.parse(localStorage.getItem('identity'));
-                identity.image = image;
-                localStorage.setItem('identity',JSON.stringify(identity));
+                // console.log('identity current image: '+identity.image);
+                identity.image = result.image;
+                // console.log('identity new image: '+identity.image);
+                localStorage.setItem('identity', JSON.stringify(identity));
               }
             );
           }
+          // console.log('previous image: '+this.user.image);
+          // console.log(this._userService.getIdentity());
           this.user = this._userService.getIdentity();
-          //console.log(this.user);
+          // console.log(this.user.image);
+          // console.log(this.user);
+          fileInput.value = '';
+
           this.alertMessage = 'User updated correctly';
         }
       },
       error => {
         var alertMessage = <any>error;
 
-        if(alertMessage != null){
+        if (alertMessage != null) {
           var body = JSON.parse(error._body);
           this.alertMessage = body.message;
           console.log(this.alertMessage);
@@ -73,34 +80,34 @@ export class UserEditComponent implements OnInit {
     );
   }
 
-  public fileChangeEvent(fileInput: any){
+  public fileChangeEvent(fileInput: any) {
     this.filesToUpload = <Array<File>>fileInput.target.files;
     console.log(this.filesToUpload);
   }
 
-  public makeFileRequest(url: string, params: Array<string>, files: Array<File>){
+  public makeFileRequest(url: string, params: Array<string>, files: Array<File>) {
     var token = this.token;
 
-    return new Promise(function(resolve,reject){
-      var formData:any = new FormData();
+    return new Promise(function(resolve, reject){
+      var formData: any = new FormData();
       var xhr = new XMLHttpRequest();
 
-      for(var i = 0; i < files.length; i++){
-        formData.append('image',files[i],files[i].name);
+      for (var i = 0; i < files.length; i++) {
+        formData.append('image', files[i], files[i].name);
       }
 
       xhr.onreadystatechange = function(){
-        if(xhr.readyState == 4){
-          if(xhr.status == 200){
+        if (xhr.readyState == 4) {
+          if (xhr.status == 200) {
             resolve(JSON.parse(xhr.response));
-          }else{
+          }else {
             reject(xhr.response);
           }
         }
       }
 
-      xhr.open('POST',url,true);
-      xhr.setRequestHeader('Authorization',token);
+      xhr.open('POST', url, true);
+      xhr.setRequestHeader('Authorization', token);
       xhr.send(formData);
     });
   }
