@@ -15,9 +15,9 @@ export class AppComponent implements OnInit {
   public token;
 
   constructor(
-    private _userService:UserService,
+    private _userService: UserService,
     private router: Router
-  ){ }
+  ) { }
 
   ngOnInit(){
     this.identity = this._userService.getIdentity();

@@ -150,6 +150,7 @@ function getImageFile(req, res){
 	})
 }
 
+// exporting modules
 module.exports = {
 	saveUser,
 	loginUser,

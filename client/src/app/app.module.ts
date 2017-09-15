@@ -9,6 +9,8 @@ import { routing, AppRoutingProviders } from './app.routing';
 import { LoginUserComponent } from './components/login-user/login-user.component';
 import { RegisterUserComponent } from './components/register-user/register-user.component';
 import { MainMenuComponent } from './components/main-menu/main-menu.component';
+import { CanActivateRouteGuard } from './app.guard';
+import { UserService } from './services/user.service';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,7 @@ import { MainMenuComponent } from './components/main-menu/main-menu.component';
     HttpModule,
     routing
   ],
-  providers: [AppRoutingProviders],
+  providers: [AppRoutingProviders, CanActivateRouteGuard, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
