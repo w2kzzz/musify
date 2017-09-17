@@ -11,7 +11,7 @@ import { MainMenuComponent } from './components/main-menu/main-menu.component';
 import { CanActivateRouteGuard } from './app.guard';
 
 const appRoutes: Routes = [
-  { path: '', component: MainMenuComponent , canActivate: [CanActivateRouteGuard]},
+  { path: '', redirectTo: 'main', pathMatch: 'full' , canActivate: [CanActivateRouteGuard]},
   { path: 'login', component: LoginUserComponent },
   { path: 'register', component: RegisterUserComponent },
   {
@@ -22,7 +22,7 @@ const appRoutes: Routes = [
       { path: 'user-info', component: UserEditComponent, canActivateChild: [CanActivateRouteGuard] }
     ]
   },
-  { path: '**', component: LoginUserComponent }
+  { path: '**', redirectTo: 'main', pathMatch: 'full', canActivate: [CanActivateRouteGuard] }
 ];
 
 export const AppRoutingProviders: any[] = [];
