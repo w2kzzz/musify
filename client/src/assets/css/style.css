@@ -9,12 +9,17 @@ body {
   background-size: cover;
   }
 
-.navbar a {
-  text-align: center;
-}
+  .navbar a {
+    text-align: center;
+  }
 
 .menu {
   display: block;
   text-align: center;
   width: 100%;
 }
+
+.content {
+  padding-top: 3rem;
+}
+

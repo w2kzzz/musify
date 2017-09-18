@@ -11,6 +11,7 @@ import { RegisterUserComponent } from './components/register-user/register-user.
 import { MainMenuComponent } from './components/main-menu/main-menu.component';
 import { CanActivateRouteGuard } from './app.guard';
 import { UserService } from './services/user.service';
+import { ArtistListComponent } from './components/artist-list/artist-list.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { UserService } from './services/user.service';
     UserEditComponent,
     LoginUserComponent,
     RegisterUserComponent,
-    MainMenuComponent
+    MainMenuComponent,
+    ArtistListComponent
   ],
   imports: [
     BrowserModule,
