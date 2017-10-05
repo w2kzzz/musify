@@ -7,6 +7,7 @@ import { LoginUserComponent } from './components/login-user/login-user.component
 import { RegisterUserComponent } from './components/register-user/register-user.component';
 import { MainMenuComponent } from './components/main-menu/main-menu.component';
 import { ArtistListComponent } from './components/artist-list/artist-list.component';
+import { ArtistAddComponent } from './components/artist-add/artist-add.component';
 
 // import Guard
 import { CanActivateRouteGuard } from './app.guard';
@@ -21,7 +22,8 @@ const appRoutes: Routes = [
       canActivate: [CanActivateRouteGuard],
     children: [
       { path: 'user-info', component: UserEditComponent, canActivateChild: [CanActivateRouteGuard] },
-      { path: 'artists/:page', component: ArtistListComponent, canActivateChild: [CanActivateRouteGuard] }
+      { path: 'artists/:page', component: ArtistListComponent, canActivateChild: [CanActivateRouteGuard] },
+      { path: 'artist', component: ArtistAddComponent, canActivateChild: [CanActivateRouteGuard] }
     ]
   },
   { path: '**', redirectTo: 'main', pathMatch: 'full', canActivate: [CanActivateRouteGuard] }

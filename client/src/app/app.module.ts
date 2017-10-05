@@ -12,6 +12,7 @@ import { MainMenuComponent } from './components/main-menu/main-menu.component';
 import { CanActivateRouteGuard } from './app.guard';
 import { UserService } from './services/user.service';
 import { ArtistListComponent } from './components/artist-list/artist-list.component';
+import { ArtistAddComponent } from './components/artist-add/artist-add.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { ArtistListComponent } from './components/artist-list/artist-list.compon
     LoginUserComponent,
     RegisterUserComponent,
     MainMenuComponent,
-    ArtistListComponent
+    ArtistListComponent,
+    ArtistAddComponent
   ],
   imports: [
     BrowserModule,

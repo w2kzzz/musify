@@ -8,7 +8,7 @@
         <div class="card-block">
           <form #registerForm="ngForm" (ngSubmit)="onSubmitUpdate();" class="col-md-12">
             <div class="form-group" *ngIf="user.image && user.image != 'null'">
-              <img id = "profileImage" class="rounded mx-auto d-block" src="{{url+'get-image-user/'+user.image}}" alt="User profile image" style="width: 200px">
+              <img id = "profileImage" class="rounded mx-auto d-block" src="{{url+'get-image-user/'+user.image}}" alt="User profile image" style="width: 100px">
             </div>
             <div class="form-group">
               <label>First Name:</label>
